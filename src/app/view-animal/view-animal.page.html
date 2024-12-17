@@ -1,0 +1,73 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button
+        [text]="getBackButtonText()"
+        defaultHref="/"
+      ></ion-back-button>
+    </ion-buttons>
+    <ion-img src="assets/logo_equinogestor.svg" slot="start"></ion-img>
+    <ion-title>/ Animais / Detalhes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" *ngIf="animal">
+  <ion-item>
+    <img
+      [src]="'https://entrar.equinogestor.com.br' + animal.AnimalFotoCapa"
+      slot="start"
+    />
+    <ion-label class="ion-text-wrap">
+      <h2>
+        {{ animal.AnimalNome }}
+        <span class="date">
+          <ion-note>{{ animal.Categoria }}</ion-note>
+        </span>
+      </h2>
+      <!-- <h3>To: <ion-note>Me</ion-note></h3> -->
+    </ion-label>
+  </ion-item>
+
+  <div class="ion-padding">
+    <h1>{{ animal.Raca }}</h1>
+    <p>{{ animal.AnimalDescricao }}</p>
+    <ion-list>
+      <ion-item [detail]="false">
+        <ion-label class="ion-text-wrap">
+          <h2>Sexo</h2>
+          <h3>{{ animal.Sexo == "0" ? "Fêmea" : "Macho" }}</h3>
+        </ion-label>
+      </ion-item>
+      <ion-item [detail]="false">
+        <ion-label class="ion-text-wrap">
+          <h2>Data de Nascimento</h2>
+          <h3>{{ animal.AnimalNascimento }}</h3>
+        </ion-label>
+      </ion-item>
+      <ion-item [detail]="false">
+        <ion-label class="ion-text-wrap">
+          <h2>Raça</h2>
+          <h3>{{ animal.Raca }}</h3>
+        </ion-label>
+      </ion-item>
+      <ion-item [detail]="false">
+        <ion-label class="ion-text-wrap">
+          <h2>Proprietário</h2>
+          <h3>{{ animal.HarasProprietario }}</h3>
+        </ion-label>
+      </ion-item>
+      <ion-item [detail]="false">
+        <ion-label class="ion-text-wrap">
+          <h2>A venda</h2>
+          <h3>{{ animal.AnimalVenda ? "Sim" : "Não" }}</h3>
+        </ion-label>
+      </ion-item>
+      <ion-item [detail]="false">
+        <ion-label class="ion-text-wrap">
+          <h2>Vivo</h2>
+          <h3>{{ animal.Status ? "Sim" : "Não" }}</h3>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

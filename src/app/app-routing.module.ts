@@ -7,8 +7,8 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
-    path: 'message/:id',
-    loadChildren: () => import('./view-message/view-message.module').then( m => m.ViewMessagePageModule)
+    path: 'animal/:id',
+    loadChildren: () => import('./view-animal/view-animal.module').then( m => m.ViewAnimalPageModule)
   },
   {
     path: '',

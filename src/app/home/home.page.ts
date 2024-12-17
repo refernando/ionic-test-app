@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { RefresherCustomEvent } from '@ionic/angular';
-import { MessageComponent } from '../message/message.component';
+import { AnimalComponent } from '../animal/animal.component';
 
-import { DataService, Message } from '../services/data.service';
+import { DataService, Animal } from '../services/data.service';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +10,8 @@ import { DataService, Message } from '../services/data.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  private data = inject(DataService);
+  private dataService = inject(DataService);
+  protected data: Animal[] = [];
   constructor() {}
 
   refresh(ev: any) {
@@ -19,7 +20,17 @@ export class HomePage {
     }, 3000);
   }
 
-  getMessages(): Message[] {
-    return this.data.getMessages();
+  ngOnInit() {
+    this.getAnimals();
+  }
+
+  getAnimals() {
+    this.dataService
+      .getAnimals()
+      .then((res) => res.json())
+      .then((data) => {
+        this.data = data;
+        console.log(data);
+      });
   }
 }

@@ -1,0 +1,13 @@
+<ion-item *ngIf="animal" [routerLink]="'/animal/' + animal.AnimalId" [detail]="false">
+  <img [src]="'https://entrar.equinogestor.com.br' + animal.AnimalFotoCapa" slot="start">
+  <ion-label class="ion-text-wrap">
+    <h2>
+      {{ animal.AnimalNome }}
+      <span class="date">
+        <ion-note>{{ animal.Sexo == "0" ? "F" : "M" }}</ion-note>
+        <ion-icon aria-hidden="true" name="chevron-forward" size="small" *ngIf="isIos()"></ion-icon>
+      </span>
+    </h2>
+    <h3>{{ animal.Categoria }}</h3>
+  </ion-label>
+</ion-item>
